@@ -884,8 +884,8 @@ def fenetres(posnuagex):
     tortuefenetres.end_fill()
     tortuefenetres.penup()
     soleil(10,93,10,tortuefenetres)
-    for k in range(8):
-        nuage((posnuagex+sin(k+31)*40)%90+10,sin(k)*10+90,1/(2+0.5*sin(k)),tortuefenetres)
+    for k in range(8,16):
+        nuage((posnuagex*k/12+sin(k+7)*40)%70+10,sin(k+37)*10+90,1/(2+0.5*sin(k)),tortuefenetres)
         update()
     tortuefenetres.setundobuffer(0)
     tortuefenetres.clear()
@@ -901,14 +901,12 @@ tracer(0)
 t=1
 undobuffersize=0
 ht()
-caleçon()
 while True:
-    t+=1
+    t+=0.3
     print(undobufferentries())
     undobuffersize=0
     #clearscreen()
     tracer(0)
-    #fenetres(t)
-    lampe(randint(-300,300),200)
-    input("")
+    fenetres(t)
+    #lampe(randint(-300,300),200)
     sleep(0.05)
