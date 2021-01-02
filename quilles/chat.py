@@ -73,7 +73,7 @@ def chat(taille,x,y):
     left(133)
     circle(t*-90,35)
     w,x=pos()
-    input("")
+
     up()
     goto(w,x)
 

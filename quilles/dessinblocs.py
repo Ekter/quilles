@@ -1,5 +1,5 @@
 from turtle import *
-from random import randint
+from random import randint,choice
 from math import cos,pi,sin
 from time import sleep
 def gotopourcent(x,y,tortue=Turtle()):
@@ -806,6 +806,37 @@ def soleil(x,y,freq=10,tortue=Turtle()):
             gotopourcent(2*cos(t/100*2*pi)+x,2*sin(t/100*2*pi)+y,tortue)
             tortue.pencolor("#000000")
     tortue.end_fill()
+#def carrelage(angle=60,taillecareaux=10,couleurcareaux="#ffffff"):
+#    for 
+def afficherétagere():
+    tracer(0)
+    ht()
+    up()
+    tortueautre=Turtle(undobuffersize=0,visible=False,shape="square")
+    tortueautre.ht()
+    tortueautre.fillcolor("#ff9839")
+    tortueautre.begin_fill()
+    tortueautre.penup()
+    gotopourcent(100,100,tortueautre)
+    tortueautre.pendown()
+    gotopourcent(100,0,tortueautre)
+    gotopourcent(0,0,tortueautre)
+    gotopourcent(0,100,tortueautre)
+    gotopourcent(100,100,tortueautre)
+    tortueautre.end_fill()
+    tailleetagere=1.2*window_height()/704
+    taille2=3/tailleetagere*1.2/1366*window_width()
+    taille3=-300*taille2/3*tailleetagere/1.2*window_width()
+    #print(tailleetagere,taille2)
+
+    etagere(tailleetagere,taille3,-50,taille2,1,1,5,15,1.03)
+    etagere(tailleetagere,0,0)
+    print("test2")
+
+
+
+
+
 def nuage(x,y,scale=1,tortue=Turtle()):
     tortue.penup()
     tortue.pencolor("#000000")
@@ -823,90 +854,410 @@ def nuage(x,y,scale=1,tortue=Turtle()):
     tortue.circle(-10*scale,90)
     gotopourcent(x,y,tortue)
     tortue.end_fill()
-def lampe(x=0,y=0):
-    x2,y2=pos()
-    penup()
+def lampe(x=0,y=0,tortuelampe=Turtle(undobuffersize=0,visible=False,shape="circle")):
+    x2,y2=tortuelampe.pos()
+    tortuelampe.penup()
     ymax=window_height()/2
-    goto(x,ymax)
-    begin_fill()
-    pencolor("#000000")
-    fillcolor("#dddddd")
-    pendown()
-    goto(x+3,ymax)
-    goto(x+3,y+50)
-    goto(x-3,y+50)
-    goto(x-3,ymax)
-    end_fill()
-    penup()
-    fillcolor("#f0f000")
-    goto(x-10,y+50)
-    pendown()
-    begin_fill()
-    goto(x+10,y+50)
+    tortuelampe.goto(x,ymax)
+    tortuelampe.begin_fill()
+    tortuelampe.pencolor("#000000")
+    tortuelampe.fillcolor("#dddddd")
+    tortuelampe.pendown()
+    tortuelampe.goto(x+3,ymax)
+    tortuelampe.goto(x+3,y+50)
+    tortuelampe.goto(x-3,y+50)
+    tortuelampe.goto(x-3,ymax)
+    tortuelampe.end_fill()
+    tortuelampe.penup()
+    tortuelampe.fillcolor("#f0f000")
+    tortuelampe.goto(x-10,y+50)
+    tortuelampe.pendown()
+    tortuelampe.begin_fill()
+    tortuelampe.goto(x+10,y+50)
     for y1 in range(y+50,y-50,-1):
         if y1>y:
-            goto(x+10+10*((y1-(y+50))/50)**2,y1)
+            tortuelampe.goto(x+10+10*((y1-(y+50))/50)**2,y1)
         else:
-            goto(x+60-10*(((y-50)-y1)/50-1)**2,y1)
-    penup()
-    goto(x-10,y+50)
-    pendown()
+            tortuelampe.goto(x+60-10*(((y-50)-y1)/50-1)**2,y1)
+    tortuelampe.penup()
+    tortuelampe.goto(x-10,y+50)
+    tortuelampe.pendown()
     for y1 in range(y+50,y-50,-1):
         if y1>y:
-            goto(x-10-10*((y1-(y+50))/50)**2,y1)
+            tortuelampe.goto(x-10-10*((y1-(y+50))/50)**2,y1)
         else:
-            goto(x-60+10*(((y-50)-y1)/50-1)**2,y1)
+            tortuelampe.goto(x-60+10*(((y-50)-y1)/50-1)**2,y1)
     for x1 in range(x-50,x+50):
-        goto(x1,4*((x1-x)/50)**2-52+y)
-    end_fill()
-    penup()
-    goto(x-20,(-20/15)**2-55+y)
-    pendown()
-    fillcolor("#eae59a")
-    begin_fill()
+        tortuelampe.goto(x1,4*((x1-x)/50)**2-52+y)
+    tortuelampe.end_fill()
+    tortuelampe.penup()
+    tortuelampe.goto(x-20,(-20/15)**2-55+y)
+    tortuelampe.pendown()
+    tortuelampe.fillcolor("#eae59a")
+    tortuelampe.begin_fill()
     for x1 in range(x-20,x+20):
-        goto(x1,4*((x1-x)/15)**2-58+y)
-    end_fill()
-    penup()
-    goto(x2,y2)
+        tortuelampe.goto(x1,4*((x1-x)/15)**2-58+y)
+    tortuelampe.end_fill()
+    tortuelampe.penup()
+    tortuelampe.goto(x2,y2)
 def fenetres(posnuagex):
     tortuefenetres=Turtle(undobuffersize=0,visible=False,shape="square")
     tortuefenetres.pencolor("#000000")
+    tortuefenetres.penup()
     tortuefenetres.fillcolor("#00ffff")
     tortuefenetres.penup()
     gotopourcent(5,100,tortuefenetres)
     tortuefenetres.pendown()
     tortuefenetres.begin_fill()
     gotopourcent(95,100,tortuefenetres)
-    gotopourcent(95,80,tortuefenetres)
-    gotopourcent(5,80,tortuefenetres)
+    gotopourcent(95,85,tortuefenetres)
+    gotopourcent(5,85,tortuefenetres)
     gotopourcent(5,100,tortuefenetres)
     tortuefenetres.end_fill()
     tortuefenetres.penup()
     soleil(10,93,10,tortuefenetres)
     for k in range(8,16):
-        nuage((posnuagex*k/12+sin(k+7)*40)%70+10,sin(k+37)*10+90,1/(2+0.5*sin(k)),tortuefenetres)
-        update()
+        nuage((posnuagex*k/12+sin(k+7)*40)%70+10,sin(k+((posnuagex*k/12+sin(k+7)*40)//70)*37)*7+92,1/(2+0.5*sin(k)),tortuefenetres)
+    tortuefenetres.fillcolor("#ff9839")
+    for k in range(1,5):
+        tortuefenetres.penup()
+        gotopourcent(20*k-2.5,100,tortuefenetres)
+        tortuefenetres.begin_fill()
+        tortuefenetres.pendown()
+        gotopourcent(20*k+2.5,100,tortuefenetres)
+        gotopourcent(20*k+2.5,85,tortuefenetres)
+        tortuefenetres.pencolor("#ff9839")
+        gotopourcent(20*k-2.5,85,tortuefenetres)
+        tortuefenetres.pencolor("black")
+        gotopourcent(20*k-2.5,100,tortuefenetres)
+        tortuefenetres.end_fill()
+    for k in range(-2,3):
+        lampe(k*200,int((0.37)*window_height()),tortuefenetres)
+    update()
     tortuefenetres.setundobuffer(0)
     tortuefenetres.clear()
+def etagere(taille,x,y,longueur=1,hauteurdesfondation=1,hauteurdunetage=1,nombrederayon=6,nombredelivre=15,proportion=1):
+
+    up()
+    goto(x,y)
+    down()
+
+    t=taille
+    l=longueur
+    hdf=hauteurdesfondation
+    hde=hauteurdunetage
+    nbr=nombrederayon
+    nbl=nombredelivre
+    pro=proportion
+
+    tracer(0)
+
+    up()
+    backward(t*150)
+    
+    right(90)
+    forward(t*160)
+    left(90)
+    down()
+
+    width(1*t)
+    pencolor('#6e8895')
 
     
+    #Base de l'étagère
+    fillcolor('#809caa')
+    begin_fill()
+    for k in range (4):
+        r,x=pos()
+        for j in range(5):
+            u,n=pos()
+            for i in range(2):
+                forward(t*67.5*l)
+                left(90)
+                up()
+                forward(t*3*hdf)
+                down()
+                dot(3*hdf)
+                up()
+                forward(t*3*hdf)
+                down()
+                left(90)
+            up()
+            goto(u,n)
+            left(90)
+            forward(t*6*hdf)
+            down()
+            right(90)
+        up()
+        goto(r,x)
+        down()
+        forward(t*67.5*l)
+    
+    end_fill()
 
+    up()
+    left(90)
+    forward(t*6*hdf*5)
+    down()
+    begin_fill()
+    for i in range(5):
+        right(60)
+        forward(20*t)
+        right(30)
+        right(90)
+        forward(t*6*hdf)
+        right(60)
+        forward(20*t)
+        right(120)
+    forward(t*6*hdf*5)
+    backward(t*6*hdf*5)
+    right(90)
+    end_fill()
+        
+    
+    
 
+    pencolor('#8f8c84')
+    left(90)
+    up()
+    forward(t*30*hdf)
+    left(90)
+    forward(t*-5*l)
+    down()
 
+    for z in range(nbr):
+        a,z=pos()
+        for m in range(2):
+            
+            up()
+            forward(t*280*l)
+            right(90)
+            forward(t*10*hde)
+            right(90)
+            down()
+            
+        up()
+        right(90)
+        forward(t*10*hde)
+        left(90)
+        forward(t*5*l)
+        down()
+        fillcolor('#dddcc9')
+        begin_fill()
+        for m in range(2):
+            forward(t*270*l)
+            right(90)
+            forward(t*50*hde)
+            right(90)
+        end_fill()
+        up()
+        right(90)
+        forward(20*t*hde)
+        left(90)
+        down()
+        forward(254*pro*l*t)
+        left(50)
+        forward(25*t*hde)
+        backward(25*t*hde)
+        right(50)
+        right(90)
+        forward(30*t*hde)
+        left(90)
+        
+        
+        up()
+        goto(a,z)
+        right(90)
+        forward(t*60*hde)
+        left(90)
+        down()
 
+    fillcolor('#cacba0')
+    begin_fill()
+    up()
+    forward(275*l*t)
+    left(210)
+    down()
+    forward(t*24)
+    right(30)
+    forward(270*l*t)
+    left(210)
+    forward(t*24)
+    backward(t*24)
+    left(60)
+    forward(t*nbr*hde*60)
+    right(60)
+    forward(24*t)
+    right(30)
+    right(90)
+    forward(t*nbr*hde*60)
+    end_fill()
+    up()
+    backward(t*nbr*hde*60)
+    left(90)
+    backward(5*l*t)
+    down()
 
-#Screen().bgpic('lit.png')
-tracer(0)
+    to,ny=pos()
+
+    up()
+    forward(5*t*l)
+    down()
+
+    fillcolor('#cacba0')
+    begin_fill()
+    right(90)
+    forward(t*nbr*hde*60)
+    left(90)
+    forward(270*t*l)
+    left(90)
+    forward(t*nbr*hde*60)
+    left(90)
+    forward(7*t)
+    left(90)
+    forward(t*nbr*hde*60-7*t)
+    right(90)
+    forward(270*t*l-14*t)
+    right(90)
+    forward(t*nbr*hde*60-7*t)
+    left(90)
+    forward(7*t)
+    end_fill()
+    left(180)
+    
+
+    up()
+    goto(to,ny)
+    
+    p,s=pos()
+    up()
+    forward(265*t*l)
+    right(90)
+    forward(10*hde*t)
+    down()
+    for g in range(2):
+        a,y=pos()
+        maxx=0
+        
+        while maxx<(240*l*t):
+            pencolor('black')
+            
+            e,r=pos()
+            fillcolor(randint(0,255)/255,randint(0,255)/255,randint(0,255)/255)
+            ep=randint(6,15)
+            hdl=randint(30,45)
+            saut=[1,1,2,2,1,3,4,3]
+            st=choice(saut)
+            
+            begin_fill()
+            for j in range(2):
+                forward(hdl*hde*t)
+                right(90)
+                forward(ep*t)
+                right(90)
+            end_fill()
+            begin_fill()
+            right(90)
+            forward(ep*t)
+            left(30)
+            forward(20*t)
+            left(60)
+            forward(hdl*hde*t)
+            left(120)
+            forward(20*t)
+            left(60)
+            forward(t*hde*hdl)
+            backward(t*hde*hdl)
+            right(60)
+            end_fill()
+            pencolor('#6e8895')
+            fillcolor('white')
+            begin_fill()
+            for i in range(3):
+                right(30)
+                forward((ep/3)*t)
+                d,f=pos()
+                right(150)
+                forward(20*t)
+                right(30)
+                forward((ep/3)*t)
+                left(210)
+                forward(20*t)
+
+                up()
+                goto(d,f)
+                down()
+            end_fill()
+            up()
+            goto(e,r)
+            right(210)
+            forward(st*ep*t)
+            down()
+            left(90)
+            maxx+=ep*t*st
+                
+        
+        up()
+        goto(a,y)
+        forward(60*t*hde)
+        down()
+
+    left(90)
+    up()
+    goto(p,s)
+    down()
+    
+    for z in range(nbr):
+        a,z=pos()
+        up()
+        forward(3*t*l)
+        down()
+        fillcolor('#ebece6')
+        begin_fill()
+        for m in range(2):
+
+            forward(t*270*l+5*t)
+            right(90)
+            forward(t*10*hde)
+            right(90)
+            
+        end_fill()
+        up()
+        right(90)
+        forward(t*10*hde)
+        left(90)
+        forward(t*5*l)
+        
+        
+        for m in range(2):
+            forward(t*270*l)
+            right(90)
+            forward(t*50*hde)
+            right(90)
+
+        
+        goto(a,z)
+        right(90)
+        forward(t*60*hde)
+        left(90)
+    
+        down()
+
 t=1
-undobuffersize=0
-ht()
+input()
+tailleinitialex=0
+tailleinitialey=0
+afficherétagere()
+
 while True:
+    if tailleinitialex!=window_width() or tailleinitialey!=window_height():
+        afficherétagere()
+        tailleinitialex=window_width()
+        tailleinitialey=window_height()
+        print("caca")
     t+=0.3
-    print(undobufferentries())
+    print(undobufferentries(),window_width())
     undobuffersize=0
-    #clearscreen()
     tracer(0)
     fenetres(t)
-    #lampe(randint(-300,300),200)
-    sleep(0.05)
+    sleep(0.1)
